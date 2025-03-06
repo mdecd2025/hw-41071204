@@ -16,6 +16,8 @@
 <h2>task1</h2>
 <h3>list</h3>
 <p>2b:</p>
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
 <p><span><a href="https://mdecd2025.github.io/hw-41071204/">學員網站連結</a> |<a href="https://github.com/mdecd2025/hw-41071204"> 學員倉儲連結</a></span></p>
 <p>2b:</p>
 <p><a href="https://mdecd2025.github.io/2b-g8/">g8 網站</a> | <a href="https://github.com/mdecd2025/2b-g8">g8 倉儲</a></p>
@@ -52,7 +54,77 @@ brython_div1 &lt;= html.BR()
 brython_div1 &lt;= "7. " + html.A("41071202", href="https://mdecd2025.github.io/hw-41071202/")+ html.A("(repo)", href="https://github.com/mdecd2025/hw-41071202")
 </pre>
 <p></p>
-<h2>task2</h2>
+<script>
+window.onload=function(){
+brython({debug:1, pythonpath:['./../cmsimde/static/','./../downloads/py/']});
+}
+</script>
+<script type="text/python3">
+from browser import document, html, ajax
+
+def 成功(req):
+    內容 = req.text
+    行列表 = 內容.strip().split('\n')
+    學員資料 = 行列表[1:]
+
+    brython_div1 = document["brython_div1"]
+    總人數 = len(學員資料)
+    brython_div1 <= html.SPAN(f"總共有 {總人數} 名學員") + html.BR() + html.BR()
+
+    for 索引, 學員 in enumerate(學員資料, start=1):
+        處理學員(索引, 學員, brython_div1)
+
+    brython_div1 <= html.BR() + html.HR() + html.BR()
+    brython_div1 <= html.SPAN("小組連結：") + html.BR()
+    添加小組連結(brython_div1)
+
+def 失敗(req):
+    print(f"失敗：{req.status}")
+
+def 處理學員(索引, 學員, 容器):
+    欄位 = 學員.strip().split('\t')
+    學號 = 欄位[0].strip() if len(欄位) >= 1 else f"第 {索引} 位"
+    github帳號 = 欄位[1].strip() if len(欄位) >= 2 else ''
+
+    個人網站 = f"https://mdecd2025.github.io/hw-{學號}"
+    網站連結 = html.A(f"{學號} 的網站", href=個人網站, target="_blank")
+
+    if github帳號:
+        github倉儲 = f"https://github.com/{github帳號}"
+        倉儲連結 = html.A(f"{學號} 的倉儲", href=github倉儲, target="_blank")
+    else:
+        倉儲連結 = html.SPAN("沒東西")
+
+    學員元素 = html.DIV()
+    學員元素 <= html.SPAN(f"{索引}. ") + 網站連結 + " | " + 倉儲連結 + html.BR()
+    容器 <= 學員元素
+
+def 添加小組連結(容器):
+    小組資訊 = [
+        ("1. ", "2b-g1"),
+        ("2. ", "2b-g2"),
+        ("3. ", "2b-g3"),
+        ("4. ", "2b-g4"),
+        ("5. ", "2b-g5"),
+        ("6. ", "2b-g6"),
+        ("7. ", "2b-g7"),
+        ("8. ", "2b-g8"),
+        ("9. ", "2b-g9"),
+        ("10. ", "2b-g10"),
+    ]
+
+    for 序號, 小組名稱 in 小組資訊:
+        小組網站 = f"https://mdecd2025.github.io/{小組名稱}/"
+        小組倉儲 = f"https://github.com/mdecd2025/{小組名稱}"
+        小組連結 = html.A(小組名稱, href=小組網站)
+        倉儲連結 = html.A("(repo)", href=小組倉儲)
+        容器 <= 序號 + 小組連結 + " " + 倉儲連結 + html.BR()
+
+資料 = "https://mde.tw/list/2b.txt"
+
+ajax.get(資料, oncomplete=成功, onerror=失敗)
+</script>
+<div id="brython_div1"></div><h2>task2</h2>
 <h2>task3</h2>
 <h2>task4</h2>
 <h2>task5</h2>
