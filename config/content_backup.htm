@@ -130,11 +130,39 @@ ajax.get(資料, oncomplete=成功, onerror=失敗)
 </script>
 <div id="brython_div1"></div>
 <h2>task2</h2>
-<h3>W3</h3>
-<h2>task3</h2>
+<h3>w3</h3>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
+
+# 網址
+url = "https://mde.tw/list/2a.txt"
+
+# 下載資料
+with urllib.request.urlopen(url) as response:
+    # 直接讀取並按行分割，不需要使用 decode()
+    data = response.read().splitlines()  # 這樣讀取已經是字串了，不需解碼
+
+# 2a 學員的帳號資料
+a_all_members = set(['41223154', '41271125', '41271158', '41271146', '41271131', 'CYG41223103', '41223102', '41023128', '41023137', '41223137', '41223157', '41223156', 'otakuyoyo', '41223141', '41223113', 'kim41223114', 'joeisme1208', '41223116', '41223144', '41223140', '41223143', '41223138', '41223134', '41223136', 'zhe41223118', 'Spirit0224', 'yuhao-08', '41223158', 'Ren911308', '41223150', 'Manto8', 'CYA41223106', 'yan21ed', 'Lin41223107', '41223133', 'hong41223129', '41223110', '41223147', 'Linjiahong41223125', 'CHN41223132', 'Yu-Fang-Hong', '41023111', 'yckaooooo', 'kolas911205', '41023105', '40932134', '41223104', 'yan41223101', '41223105', '41223153', '41223120', '41223152', 'G8People', 'WSE41223112', '41223146', '41223119'])
+
+# 跳過第一行標題，並過濾出 GitHub 帳號不在 a_all_members 的學員
+non_member_stud_nums = []
+
+for line in data[1:]:  # 跳過標題行
+    stud_num, stud_github = line.split("\t")  # 拆分學號與 GitHub 帳號
+    if stud_github not in a_all_members:
+        non_member_stud_nums.append(stud_num)
+
+# 顯示結果
+for stud_num in non_member_stud_nums:
+    print(stud_num)
+</pre>
+<p><a href="https://mdecd2025.github.io/hw-41071204/content/Brython?src=https://gist.githubusercontent.com/41071204/4554dc2ce129e98316ec49c8dcc0a3bf/raw/9f0ae8f3a582813fd182f722cda9739d725658dd/%25E8%25AB%258B%25E5%2588%2597%25E5%2587%25BA%25E5%2590%2584%25E7%258F%25AD%25E7%259B%25AE%25E5%2589%258D%25E5%25B0%259A%25E6%259C%25AA%25E7%25B4%258D%25E5%2585%25A5%25E5%2588%2586%25E7%25B5%2584%25E7%259A%2584%25E5%25AD%25B8%25E5%2593%25A1%25E5%2590%258D%25E5%2596%25AE.py" title="1">1</a><br/><br/><br/><br/></p>
+<p></p><h2>task3</h2>
+<p><br/><br/><br/><br/><br/><br/><br/></p>
 <h2>task4</h2>
 <h3>W4</h3>
 <h3>W5</h3>
+<h3>W6</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/14ttNUttUC4?si=ZtmwFxovXxp6qATl" title="YouTube video player" width="560"></iframe></p>
 <h2>task5</h2>
 <h2>task6</h2>
