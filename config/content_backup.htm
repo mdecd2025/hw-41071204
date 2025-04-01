@@ -156,14 +156,63 @@ for line in data[1:]:  # 跳過標題行
 for stud_num in non_member_stud_nums:
     print(stud_num)
 </pre>
-<p><a href="https://mdecd2025.github.io/hw-41071204/content/Brython?src=https://gist.githubusercontent.com/41071204/4554dc2ce129e98316ec49c8dcc0a3bf/raw/9f0ae8f3a582813fd182f722cda9739d725658dd/%25E8%25AB%258B%25E5%2588%2597%25E5%2587%25BA%25E5%2590%2584%25E7%258F%25AD%25E7%259B%25AE%25E5%2589%258D%25E5%25B0%259A%25E6%259C%25AA%25E7%25B4%258D%25E5%2585%25A5%25E5%2588%2586%25E7%25B5%2584%25E7%259A%2584%25E5%25AD%25B8%25E5%2593%25A1%25E5%2590%258D%25E5%2596%25AE.py" title="1">1</a><br/><br/><br/><br/></p>
-<p></p><h2>task3</h2>
+<p><a href="https://mdecd2025.github.io/hw-41071204/content/Brython?src=https://gist.githubusercontent.com/41071204/4554dc2ce129e98316ec49c8dcc0a3bf/raw/9f0ae8f3a582813fd182f722cda9739d725658dd/%25E8%25AB%258B%25E5%2588%2597%25E5%2587%25BA%25E5%2590%2584%25E7%258F%25AD%25E7%259B%25AE%25E5%2589%258D%25E5%25B0%259A%25E6%259C%25AA%25E7%25B4%258D%25E5%2585%25A5%25E5%2588%2586%25E7%25B5%2584%25E7%259A%2584%25E5%25AD%25B8%25E5%2593%25A1%25E5%2590%258D%25E5%2596%25AE.py" title="請列出各班目前尚未納入分組的學員名單(2a)">請列出各班目前尚未納入分組的學員名單(2a)</a><br/><br/><br/><br/></p>
+<pre class="brush:py;auto-links:false;toolbar:false" contenteditable="false">import urllib.request
+
+# 設定 URL
+url = "https://mde.tw/list/2b.txt"
+
+# 下載並讀取資料
+response = urllib.request.urlopen(url)
+data = response.read().splitlines()  # 移除 decode，直接處理讀取的資料
+
+# 跳過標題行，從第二行開始處理
+all_stud = data[1:]
+
+# 固定的 GitHub 帳號清單
+b_all_members = [
+    '41223251', '41223211', '41223245', '41223243', 'jjjay41223212', 'leeshaowei0716',
+    '41223234', '41223209', '41223205', '41223201', '41223202', '41223208-hw', '41223216',
+    '41223217', '41223248', 'emma0312', '41223242', '41223203', '41223144', '41223235',
+    'RAY41223215', 'hyy41223228', '41223227', '41223206', '41223226-0', 'Cloud41223237',
+    'Yujenchuang', '41223225', 'ljg41223220', 'supowen', 'jacky93111', '41223246', 'Liu41223244',
+    '41223236', '41223219', '41271237', '41223249', '41223229', '41223224', '41223222',
+    '41223231', 'linryan23', '41023114', '41223230', 'timluo123', 'CYC41223247', '41223218',
+    'ych0227', '41023215', '41023216', '41023213', '41071203', '41071204', '41071202', 'c-ching',
+    'YUN4', 'tseYU000', 'snowfall-killer', 'junpig10'
+]
+
+# 逐行處理學員資料
+for i in all_stud:
+    # 移除每行結尾的換行符號
+    drop_n = i.strip()
+
+    # 檢查該行是否為空行
+    if not drop_n:
+        continue
+
+    # 用制表符分割學號與 GitHub 帳號
+    stud = drop_n.split("\t")
+
+    # 檢查該行是否包含足夠的欄位（至少2個欄位：學號與 GitHub 帳號）
+    if len(stud) &lt; 2:
+        print(f"格式錯誤: {drop_n}")
+        continue
+
+    stud_num = stud[0]
+    stud_github = stud[1]
+
+    # 如果 GitHub 帳號不在 b_all_members 中，印出學號
+    if stud_github not in b_all_members:
+        print(stud_num)
+</pre>
+<p><a href="https://mdecd2025.github.io/hw-41071204/content/Brython.html?src=https://gist.githubusercontent.com/41071204/4146204df02260b993fa9a1fb0d7dc8c/raw/a0f3977721e0690680b356d490aa2f564ae64e0d/%25E8%25AB%258B%25E6%258E%25A5%25E8%2591%2597%25E5%2588%2597%25E5%2587%25BA%25E7%259B%25AE%25E5%2589%258D%25E5%2590%2584%25E7%258F%25AD%25E5%25B0%259A%25E6%259C%25AA%25E7%25B4%258D%25E7%25B5%2584%25E7%259A%2584%25E5%25AD%25B8%25E5%2593%25A1%25E5%25AD%25B8%25E8%2599%259F(2b)" title="1">1</a></p><h2>task3</h2>
 <p><br/><br/><br/><br/><br/><br/><br/></p>
 <h2>task4</h2>
 <h3>W4</h3>
 <h3>W5</h3>
-<h3>W6</h3>
 <p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/14ttNUttUC4?si=ZtmwFxovXxp6qATl" title="YouTube video player" width="560"></iframe></p>
+<h3>W6</h3>
 <h2>task5</h2>
 <h2>task6</h2>
 <h1>Homework</h1>
