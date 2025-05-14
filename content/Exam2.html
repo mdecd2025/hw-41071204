@@ -145,7 +145,36 @@ img.add_border {
     <div id="tipue_search_content">Exam1 << <a href='Exam1.html'>Previous</a> <a href='Exam3.html'>Next</a> >> Exam3<br /><h1>Exam2</h1>
 <p>Exam2 (10%): 利用 CAD 零組件建立模擬場景</p>
 <p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam2 - 學員學號</p>
-<br />Exam1 << <a href='Exam1.html'>Previous</a> <a href='Exam3.html'>Next</a> >> Exam3</div>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/Sp5VBgJxtnE?si=BIt6z071wthZxnfy" title="YouTube video player" width="560"></iframe></p>
+<ol>
+<li>在<span>solvespace</span>裡畫好零件及架構圖<span>-</span>轉成<span>stl-</span>使用程式碼轉成<span>obj-</span>匯入<span>Blender</span></li>
+<li>轉成<span>stl</span></li>
+<li>使用程式碼轉成<span>obj</span></li>
+<li>匯入<span>Blender</span>確認各零件名</li>
+<li>打開<span>webot</span>加入<span>robot</span></li>
+<li><span>robot- children</span>建立兩個<span>HingeJoint(joint1</span>、<span>joint4)</span>、<span>solid(base1</span>、<span>base2)</span></li>
+<li><span>solid(base1)- children- Shape-Mesh</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(1 0 0)</span>完成<span>base1</span></li>
+<li><span>solid(base2)- children- Shape-Mesh</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(0 1 0)</span>完成<span>base2</span></li>
+<li><span>HingeJoint(joint1)- Solid-children- Shape-Mesh</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(0 0 1)</span></li>
+<li><span>HingeJoint(joint1)- HingeJointParameters-axis(0 0 1) </span></li>
+<li><span>HingeJoint(joint1)-device- RotationalMotor</span>完成<span>link1</span></li>
+<li><span>HingeJoint(joint2)- Solid-children- Shape-Mesh</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(0 1 1)</span></li>
+<li><span>HingeJoint(joint2)- HingeJointParameters-axis(0 0 1) -anchor(1.0375 0.0725 0) </span>完成<span>link2</span></li>
+<li><span>HingeJoint(joint3)- Solid-children- Shape-Mesh</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(1 1 0)</span></li>
+<li><span>HingeJoint(joint3)- HingeJointParameters-axis(0 0 1) -anchor(0.723 1.5392 0) </span>完成<span>link3</span></li>
+<li><span>boundingObject-mesh- link1-physics- physics</span></li>
+<li><span>boundingObject- mesh - link2-physics- physics</span></li>
+<li><span>boundingObject- mesh - link3-physics- physics</span></li>
+<li><span>HingeJoint(joint4)- SolidReference-link3</span></li>
+<li><span>HingeJoint(joint4)- HingeJointParameters-axis(0 0 1)-anchor(2 0 0)</span></li>
+<li><span>Controller-fourbar_controller</span></li>
+</ol>
+<p>心得 做<span>Exam2</span>就沒有<span>Exam1</span>的問題了，因為<span>Exam2</span>是先在<span>solvespace</span>裡放置好各零件位置並直接轉過去，所以匯進<span>webot</span>時不需要去調每個零件的位置。但在一開始設計連桿時沒有注意到長度，所以做動時卡住了，調整後才能順利做動。</p><br />Exam1 << <a href='Exam1.html'>Previous</a> <a href='Exam3.html'>Next</a> >> Exam3</div>
         
     <!-- footer -->
       <div class="container">
