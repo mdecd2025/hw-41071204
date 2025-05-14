@@ -144,8 +144,37 @@ img.add_border {
         </header>
     <div id="tipue_search_content">Exam << <a href='Exam.html'>Previous</a> <a href='Exam2.html'>Next</a> >> Exam2<br /><h1>Exam1</h1>
 <p>Exam1 (10%): 建立 Webots 基本物件模擬場景</p>
-<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam1 - 學員學號</p>
-<br />Exam << <a href='Exam.html'>Previous</a> <a href='Exam2.html'>Next</a> >> Exam2</div>
+<p>操作影片標題: 國立虎尾科技大學 - 機械設計工程系 - cd2025 Exam1 - 41071204</p>
+<p><iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" frameborder="0" height="315" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/8hJ3klNMNig?si=8AIxqbE-s_S_n6Bl" title="YouTube video player" width="560"></iframe></p>
+<ol>
+<li>加入<span>robot</span></li>
+<li>在<span>robot</span>底下的<span>children</span>建立兩個<span>HingeJoint(joint1</span>、<span>joint4)</span></li>
+<li><span>HingeJoint(joint1)-Solid-children-pose- children-Shape-geometry-Box(0.4 0.1 0.1)</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(1 0 0)</span></li>
+<li><span>translation (Solid) -0.5 0 0.4 rotation(Solid) 0 0 1 0.06981320000000071</span></li>
+<li><span>translation (pose) 0.2 0 0</span></li>
+<li><span>HingeJoint(joint1)- HingeJointParameters-axis(0 0 1)-anchor(-0.5 0 0) </span></li>
+<li><span>HingeJoint(joint1)-device- RotationalMotor</span>完成<span>link1</span></li>
+<li><span>HingeJoint(joint2)-Solid-children-pose- children-Shape-geometry-Box(0.6 0.1 0.1)</span></li>
+<li><span>HingeJoint(joint2)-Solid-children-pose- children-Shape-geometry-Box(0.3 0.1 0.1)</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(0 1 0)</span></li>
+<li><span>translation (Solid) 0.4 0 0.1 rotation(Solid) 0 0 1 1.57</span></li>
+<li><span>translation (pose) 0.3 0 0 translation (pose) 0 0.15 0 rotation(pose) 0 0 1 1.57</span></li>
+<li><span>HingeJoint(joint2)- HingeJointParameters-axis(0 0 1)-anchor(0.4 0 0) </span>完成<span>link2</span></li>
+<li><span>HingeJoint(joint3)-Solid-children-pose- children-Shape-geometry-Box(0.9 0.1 0.1)</span></li>
+<li><span>Shape- Appearance- Material- diffuseColir(0 0 1)</span></li>
+<li><span>translation (Solid) 0.6 0 -0.1 rotation(Solid) 0 0 -1 2.4</span></li>
+<li><span>translation (pose) 0.45 0 0</span></li>
+<li><span>HingeJoint(joint3)- HingeJointParameters-axis(0 0 1)-anchor(0.6 0 0) </span>完成<span>link3</span></li>
+<li><span>boundingObject-pose-use-link1(translation 0.2 0 0)-physics- physics</span></li>
+<li><span>boundingObject-pose-use-link2(translation 0.3 0 0)-physics- physics</span></li>
+<li><span>boundingObject-pose-use-link3(translation 0.45 0 0)-physics- physics</span></li>
+<li><span>HingeJoint(joint4)- SolidReference-link3</span></li>
+<li><span>HingeJoint(joint4)- HingeJointParameters-axis(0 0 1)-anchor(0.5 0 0)</span></li>
+<li><span><span>Controller-fourbar_controller</span></span>
+<p>心得 做<span>Exam1</span>時想說應該跟<span>HW1</span>很像，所以應該不難，但操作時發現有遇到一些難關，改位置時我常把<span>Solid</span>跟<span>pose</span>搞混，所以改完位置後會發現做動時會解體，改位置上可是花費了不少時間。</p>
+<span></span></li>
+</ol><br />Exam << <a href='Exam.html'>Previous</a> <a href='Exam2.html'>Next</a> >> Exam2</div>
         
     <!-- footer -->
       <div class="container">
